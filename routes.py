@@ -1,9 +1,9 @@
 import json
 import csv
 
-
 from flask import current_app as app
 from flask import redirect, request, url_for, jsonify
+
 
 # Create a dictionary to holds info converted from csv file into json
 
@@ -28,5 +28,7 @@ jsonFilePath = 'Bouldertrails/BoulderTrailHeads.json'
 make_json(svFilePath, jsonFilePath)
 
 
-# Get all available trails
-# app.route('/trails', methods=['GET'], strict_slashes=False)
+# convert JSON data to a map
+with open(jsonFilePath) as json_file:
+    data = json.load(json_file)
+    print(data['FID'][0])

@@ -1,8 +1,10 @@
 from flask import Flask
+# from flask_cors import CORS, cross_origin
+import json
+import csv
+from flask import redirect, request, url_for, jsonify
 
 import config
-
-app = Flask(__name__)
 
 
 def create_app():
@@ -11,16 +13,27 @@ def create_app():
 
     with app.app_context():
         import routes
+        import model
 
  #   cors = CORS()
-  #  cors.init_app(app)
-
+ #   cors.init_app(app)
     return app
 
 
-@app.route('/')  # to test api
-def home():
-    return "hello"
+with open('BoulderTrailHeads.json') as json_file:
+    data = json.load(json_file)
+
+    # for reading nested data [0] represents
+    # the index value of the list
+    print(data['1']['FID'])
+    # create an object of trail and populate based on the it's json
+    # create a list of key value pairs(map)
+
+    # create trail object
+    # for k, v in data.items():
+    #     print(k, v)
+# get bicile is yes and show result
+    # Get all available trails
 
 
 if __name__ == '__main__':
